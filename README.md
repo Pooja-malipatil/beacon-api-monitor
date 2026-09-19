@@ -267,6 +267,9 @@ beacon/
 This project builds on an original open-source endpoint-monitoring starter (basic pinging, in-memory storage, and email alerts). The database layer, authentication, incident management, alerting system, analytics, service groups, real-time updates, and rebuilt frontend were added on top of that foundation.
 
 ---
+##Deployment
+Backend deployed on Render-https://beacon-api-monitor.onrender.com
+Frontend deployed on Vercel-https://beacon-api-monitor.vercel.app/
 
 ## Author
 
