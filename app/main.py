@@ -47,13 +47,12 @@ app.add_middleware(
 )
 
 @app.get("/")
-async def root():
+def root():
     return {
-        "status": "Watchpost is running 🟢",
-        "author": "Sagnik Chakraborty",
-        "github": "https://github.com/RyukXO-code",
-        "linkedin": "https://www.linkedin.com/in/sagnik-chakraborty-a56813338/",
-        "version": "0.1.0"
+        "status": "Beacon is running 🟢",
+        "author": "Pooja-malipatil",
+        "github": "https://github.com/Pooja-malipatil",
+        "version": "1.0.0",
     }
 
 @app.get("/endpoints")

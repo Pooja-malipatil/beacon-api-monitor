@@ -6,6 +6,8 @@ from app import db_models
 from app.ws_manager import broadcast_update
 RESPONSE_TIME_DEGRADED_THRESHOLD_MS = 1000  # simple fixed threshold for now
 CONSECUTIVE_FAILURES_FOR_DOWN = 3
+import asyncio
+from app.alerts import send_down_alert, send_up_alert
 
 
 def run_service_check(service_id: str):
@@ -68,6 +70,16 @@ def run_service_check(service_id: str):
             if open_incident:
                 open_incident.status = "resolved"
                 open_incident.resolved_at = datetime.utcnow()
+                
+                try:
+                    owner_email = service.owner.email
+                    asyncio.run(send_up_alert(
+                        endpoint_name=service.name,
+                        url=service.url,
+                        to_email=owner_email,
+                    ))
+                except Exception as e:
+                    print(f"Failed to send up alert: {e}")
         else:
             service.consecutive_failures += 1
             if service.consecutive_failures >= CONSECUTIVE_FAILURES_FOR_DOWN:
@@ -81,6 +93,17 @@ def run_service_check(service_id: str):
                         reason=error_message or f"Failed {CONSECUTIVE_FAILURES_FOR_DOWN} consecutive checks",
                     )
                     db.add(incident)
+                    
+                    try:
+                        owner_email = service.owner.email
+                        asyncio.run(send_down_alert(
+                            endpoint_name=service.name,
+                            url=service.url,
+                            reason=incident.reason,
+                            to_email=owner_email,
+                        ))
+                    except Exception as e:
+                        print(f"Failed to send down alert: {e}")
 
     
         db.commit()
