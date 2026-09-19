@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://beacon-api-monitor.onrender.com";
 
 export function createApiClient(token) {
   return axios.create({
