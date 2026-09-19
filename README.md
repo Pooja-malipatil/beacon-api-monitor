@@ -4,11 +4,6 @@
 
 Built with **FastAPI** + **React** + **PostgreSQL**
 
-[![MIT License](https://img.shields.io/badge/License-MIT-7c5cfc.svg)](LICENSE)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-00e676.svg)](https://fastapi.tiangolo.com)
-[![React](https://img.shields.io/badge/React-18+-00b0ff.svg)](https://reactjs.org)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791.svg)](https://www.postgresql.org)
-[![Python](https://img.shields.io/badge/Python-3.10+-ffea00.svg)](https://python.org)
 
 ---
 
