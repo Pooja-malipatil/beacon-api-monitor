@@ -273,7 +273,7 @@ Frontend deployed on Vercel-https://beacon-api-monitor.vercel.app/
 
 ## Author
 
-**YOUR_NAME**
+**Pooja-malipatil**
 
 - GitHub: [@Pooja-malipatil](https://github.com/Pooja-malipatil)
 
